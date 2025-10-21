@@ -103,10 +103,32 @@
     text-decoration: none;
   }
 
+  .collection__title h2 {
+    font-family: "Calluna";
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  .price__sale .price-item--sale {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 18px;
+  }
+
+  .price__sale .price-item--regular {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.featured-collection___padding_top }}px;
+      padding-bottom: {{ section.settings.featured-collection___padding_bottom }}px;
     }
   }
 {%- endstyle -%}
@@ -264,7 +286,6 @@
       {%- endif -%}
     </slider-component>
 
-    {%- if section.settings.show_view_all and more_in_collection -%}
       <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <a
           href="{{ section.settings.collection.url }}"
@@ -274,7 +295,6 @@
           {{ 'sections.featured_collection.view_all' | t }}
         </a>
       </div>
-    {%- endif -%}
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
     {%- endif -%}
@@ -372,6 +392,16 @@
         }
       ],
       "default": "body"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color_scheme",
+      "id": "featured-collection___button_color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
     },
     {
       "type": "header",
@@ -567,23 +597,23 @@
     },
     {
       "type": "range",
-      "id": "padding_top",
+      "id": "featured-collection___padding_top",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "default": 70
     },
     {
       "type": "range",
-      "id": "padding_bottom",
+      "id": "featured-collection___padding_bottom",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "default": 70
     }
   ],
   "presets": [
